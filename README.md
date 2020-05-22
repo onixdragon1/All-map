@@ -6,9 +6,9 @@
 # 🔒Project : All-map / 프로젝트 : All-map
 
 ## ❔ Purpose / 목적
-영어 포함 예정
+We have noticed that the update rate of the distance view service in N company's map service slows down as we move to the provinces. So, we planned this 'All-map' project to solve problems caused by temporal and spatial constraints by creating a map service which updates in real time through service users.
 
-N사의 지도 서비스에 존재하는 거리 뷰 서비스의 업데이트 속도가 지방으로 갈 수록 느려지는 현상을 보고 유저를 통해 실시간으로 업데이트가 되는 지도 서비스를 만들어 시간이나 공간적 제약으로 인한 문제를 해결해 보고 싶어 해당 프로젝트를 기획했습니다.
+N사의 지도 서비스에 존재하는 거리 뷰 서비스의 업데이트 속도가 지방으로 갈 수록 느려지는 현상을 보았습니다. 저희는 유저를 통해 실시간으로 업데이트가 되는 지도 서비스를 만들어 시간이나 공간적 제약으로 인한 문제를 해결해 보고 싶어 해당 프로젝트를 기획했습니다.
   
 
 ## 🎁 Function / 기능
