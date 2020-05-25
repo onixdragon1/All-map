@@ -1,4 +1,5 @@
 import 'package:all_map/model/quiz.dart';
+import 'package:all_map/screen/screen_result.dart';
 import 'package:all_map/widget/widget_candidtae.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
@@ -107,7 +108,15 @@ class _QuizScreenState extends State<QuizScreen> {
                   color: Colors.deepPurple,
                   onPressed: _answers[_curIdx] == -1 ? null :() {
                     if(_curIdx == widget.quizs.length -1) {
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ResultScreen(
+                            answers: _answers,
+                            quizs: widget.quizs
+                          ),
+                        ),
+                      );
                     } else {
                       _answerState = [false, false, false, false];
                       _curIdx += 1;
