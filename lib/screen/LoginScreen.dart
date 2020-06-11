@@ -153,7 +153,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 /*넘어갈 페이지 Nasvigator.push() 메서드로 제작*/
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => SignUpScreen()),
+                                  MaterialPageRoute(
+                                    builder: (context) => SignUpScreen(
+                                      
+                                    ),
+                                  ),
                                 );
                               },
                               child: Text(
