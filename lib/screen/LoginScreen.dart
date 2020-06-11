@@ -1,3 +1,4 @@
+import 'package:all_map/screen/SignUpScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:all_map/widget/DrawCircle.dart';
 
@@ -149,7 +150,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             InkWell(
                               onTap: () {
-                                /*넘어갈 페이지 Nasvigator.push() 메서드로 제작*/ 
+                                /*넘어갈 페이지 Nasvigator.push() 메서드로 제작*/
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => SignUpScreen()),
+                                );
                               },
                               child: Text(
                                 '지금 만들어 보세요',
