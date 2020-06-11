@@ -1,4 +1,4 @@
-import 'package:all_map/screen/screen_home.dart';
+import 'package:all_map/screen/LoginScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'All map',    
-      home: HomeScreen(),
+      home: LoginScreen(),
     );
   }
 }
