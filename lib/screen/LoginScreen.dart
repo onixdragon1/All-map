@@ -1,4 +1,5 @@
 import 'package:all_map/screen/SignUpScreen.dart';
+import 'package:all_map/screen/MainMapScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:all_map/widget/DrawCircle.dart';
 
@@ -121,7 +122,15 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             color: Color.fromRGBO(89, 197, 71, 1),
                             onPressed: () {
-                              /*넘어갈 페이지 Nasvigator.push() 메서드로 제작*/ 
+                              /*넘어갈 페이지 Nasvigator.push() 메서드로 제작*/
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MainMapScreen(
+                                    
+                                  ),
+                                ),
+                              );
                             },
                           ),
                         ),

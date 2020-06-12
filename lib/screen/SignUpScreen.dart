@@ -13,9 +13,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
     double width = screenSize.width;
     double height = screenSize.height;
 
+    final myNickname_Controller = TextEditingController();
     final myEmail_Controller = TextEditingController();
     final myPassword_Controller = TextEditingController();
-    final myNickname_Controller = TextEditingController();
 
     @override
     void dispose() {
@@ -31,7 +31,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     var circleOffsetY_green = height * 0.025;
     var circleOffsetY_yellow = (height * 0.1) * -1;
 
-    return  SafeArea(
+    return SafeArea(
       child: Scaffold(
         body: Center(
           child: Container(
