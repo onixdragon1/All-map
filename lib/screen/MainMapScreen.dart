@@ -34,6 +34,7 @@ class _MainMapScreenState extends State<MainMapScreen> {
                 Stack(
                   children: <Widget>[
                     /*Google Map이 들어올 자리*/
+                    /*Google Map API 받아서 백그라운드로 맵 설정 후 Floating Menu 구현*/
                     Container(
                       width: width * 0.8,
                       height: height * 0.95,
