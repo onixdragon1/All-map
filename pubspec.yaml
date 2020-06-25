@@ -49,10 +49,12 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - Images/bgImage.jpg
-    - Images/curved_arrow_rotated.png
-    - Images/gear.png
+    - Images/mozaic.png
+    - Images/open.png
+    - Images/settings.png
     - Images/shop.png
-    - Images/market.png
+    - Images/shop_package.png
+    - Images/upload.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

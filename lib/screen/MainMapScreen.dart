@@ -86,7 +86,7 @@ class _MainMapScreenState extends State<MainMapScreen> {
                             offset: Offset(0.0, -2.0), // shadow direction: bottom right
                           ),
                         ],
-                      ),                      
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
@@ -94,7 +94,7 @@ class _MainMapScreenState extends State<MainMapScreen> {
                             alignment: Alignment.center,
                             children: <Widget>[
                               Image.asset(
-                                'Images/curved_arrow_rotated.png',
+                                'Images/upload.png',
                                 fit: BoxFit.cover,
                                 width: width * 0.1,
                                 height: width * 0.1,
@@ -140,7 +140,7 @@ class _MainMapScreenState extends State<MainMapScreen> {
                             alignment: Alignment.center,
                             children: <Widget>[
                               Image.asset(
-                                'Images/market.png',
+                                'Images/shop_package.png',
                                 fit: BoxFit.cover,
                                 width: width * 0.1,
                                 height: width * 0.1,
@@ -163,7 +163,7 @@ class _MainMapScreenState extends State<MainMapScreen> {
                             alignment: Alignment.center,
                             children: <Widget>[
                               Image.asset(
-                                'Images/gear.png',
+                                'Images/settings.png',
                                 fit: BoxFit.cover,
                                 width: width * 0.1,
                                 height: width * 0.1,
