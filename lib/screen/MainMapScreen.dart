@@ -54,7 +54,9 @@ class _MainMapScreenState extends State<MainMapScreen> {
       ),
     );
   }
-
+  /// showGoogleMap
+  /// GoogleMap의 API Key를 받아 pubspec.yaml 파일에 적용 후
+  /// 제일 뒤인 배경에 GoogleMap을 올릴 예정(현재는 색만 배치)
   Widget showGoogleMap(width, height){
     return Container(
       width: width * 1,
@@ -63,6 +65,10 @@ class _MainMapScreenState extends State<MainMapScreen> {
     );
   }
 
+  /// showSearchInput
+  /// 장소, 상호명 또는 주소를 입력받는 TextField Widget 반환
+  /// mySearch_Controller 컨트롤러를 Parameter로 넘김
+  /// 추후에 mySearch_Controller TextField에 입력된 값을 받아올 예정
   Widget showSearchInput(width, height, mySearch_Controller){
     return Container(
       alignment: Alignment.center,
@@ -94,6 +100,10 @@ class _MainMapScreenState extends State<MainMapScreen> {
     );
   }
 
+  /// makeBottomNavbarComponent
+  /// 하단 Navbar의 구성요소인 4가지
+  /// "길 찾기", "주변 상점", "포인트 교환", "설정"
+  /// 을 구성하는 위젯을 반환 (각 Component 별로 분리)
   Widget makeBottomNavbarComponent(name, width){
     
     if(name == "길 찾기"){
@@ -202,6 +212,9 @@ class _MainMapScreenState extends State<MainMapScreen> {
     else return Text("존재하지 않은 컴포넌트입니다!");
   }
 
+  /// showBottomNavbar
+  /// makeBottomNavbarComponent의 함수를 사용해
+  /// 구성된 하단의 Navbar 반환
   Widget showBottomNavbar(width, height){
     return Container(
       alignment: Alignment.center,

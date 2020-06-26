@@ -55,6 +55,7 @@ flutter:
     - Images/shop.png
     - Images/shop_package.png
     - Images/upload.png
+    - Images/Allmap_Icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

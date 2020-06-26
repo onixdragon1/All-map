@@ -47,14 +47,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: height * 0.95,
                   child: Column(
                     children: <Widget>[
+                      showPaddingByDIR(0, width, 0.036),
                       showIconCard(width, height),
-                      showPaddingByDIR(0, width, 0.048),
+                      showPaddingByDIR(0, width, 0.060),
                       showNickInput(myNickname_Controller),
                       showPaddingByDIR("bottom", width, 0.072),
                       showEmailInput(myEmail_Controller),
                       showPaddingByDIR("bottom", width, 0.072),
                       showPwdInput(myPassword_Controller),
-                      showPaddingByDIR("bottom", width, 0.120),
+                      showPaddingByDIR("bottom", width, 0.144),
                       showSignUpBtn(width, height),
                     ],
                   ),
@@ -71,18 +72,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
   /// Card 위젯 반환
   Widget showIconCard(width, height){
     return Card(
+      elevation: 10,
       child: Image.asset(
-        'Images/bgImage.jpg',
+        'Images/Allmap_Icon.png',
         fit: BoxFit.cover,
-        width: width * 0.35556,
-        height: width * 0.35556,
+        width: width * 0.311,
+        height: width * 0.311,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(14),
-        side: BorderSide(
-          color: Color.fromRGBO(190, 202, 190, 1),
-          width: 1,
-        ),
+        borderRadius: BorderRadius.circular(24),
       ),
       margin: EdgeInsets.all(5),
       color: Color.fromRGBO(190, 202, 190, 0.9),
@@ -129,14 +127,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return TextField(
       controller: myNickname_Controller,
       decoration: InputDecoration(
-        isDense: true,
+        filled: true,
         prefixIcon: new Icon(Icons.text_fields),
-        border: OutlineInputBorder(),
+        border: InputBorder.none,
         hintText: '닉네임',
         hintStyle: TextStyle(
           fontSize: 12,
         ),
-        fillColor: Color.fromRGBO(228, 255, 223, 1),
+        fillColor: Color.fromRGBO(239, 239, 239, 1),
       ),
     );
   }
@@ -150,14 +148,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
       obscureText: true,
       controller: myEmail_Controller,
       decoration: InputDecoration(
-        isDense: true,
+        filled: true,
         prefixIcon: new Icon(Icons.text_fields),
-        border: OutlineInputBorder(),
+        border: InputBorder.none,
         hintText: '이메일',
         hintStyle: TextStyle(
           fontSize: 12,
         ),
-        fillColor: Color.fromRGBO(228, 255, 223, 1),
+        fillColor: Color.fromRGBO(239, 239, 239, 1),
       ),
     );
   }
@@ -171,14 +169,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
       obscureText: true,
       controller: myPassword_Controller,
       decoration: InputDecoration(
-        isDense: true,
+        filled: true,
         prefixIcon: new Icon(Icons.text_fields),
-        border: OutlineInputBorder(),
+        border: InputBorder.none,
         hintText: '비밀번호',
         hintStyle: TextStyle(
           fontSize: 12,
         ),
-        fillColor: Color.fromRGBO(228, 255, 223, 1),
+        fillColor: Color.fromRGBO(239, 239, 239, 1),
       ),
     );
   }

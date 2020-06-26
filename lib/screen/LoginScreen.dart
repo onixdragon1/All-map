@@ -40,34 +40,31 @@ class _LoginScreenState extends State<LoginScreen> {
       child: SafeArea(
         child: Scaffold(
           body: Center(
-            child: Container(
-              width: width * 1,
-              height: height * 1,
-              child: Column(
-                children: <Widget>[
-                  CustomPaint(painter: DrawCircle(Color.fromRGBO(14, 198, 11, 0.4), circleOffsetX_green, circleOffsetY_green, width * 0.4166666666666667)),
-                  CustomPaint(painter: DrawCircle(Color.fromRGBO(243, 245, 126, 0.6), circleOffsetX_yellow, circleOffsetY_yellow, width * 0.4166666666666667+10)),
-                  Container(
-                    width: width * 0.8,
-                    height: height * 0.85,
-                    child: Column(
-                      children: <Widget>[
-                        showIconCard(width, height),
-                        showPaddingByDIR(0, width, 0.048),
-                        showEmailInput(myEmail_Controller),
-                        showPaddingByDIR("bottom", width, 0.048),
-                        showPwdInput(myPassword_Controller),
-                        showPaddingByDIR("bottom", width, 0.120),
-                        showSignInBtn(width, height),
-                        showPaddingByDIR("bottom", width, 0.072),
-                        showForgotPwdInkwell(),
-                        showPaddingByDIR("bottom", width, 0.240),
-                      ],
-                    ),
+            child: Column(
+              children: <Widget>[
+                CustomPaint(painter: DrawCircle(Color.fromRGBO(14, 198, 11, 0.4), circleOffsetX_green, circleOffsetY_green, width * 0.4166666666666667)),
+                CustomPaint(painter: DrawCircle(Color.fromRGBO(243, 245, 126, 0.6), circleOffsetX_yellow, circleOffsetY_yellow, width * 0.4166666666666667+10)),
+                Container(
+                  width: width * 0.8,
+                  
+                  child: Column(
+                    children: <Widget>[
+                      showPaddingByDIR("top", width, 0.072),
+                      showIconCard(width, height),
+                      showPaddingByDIR(0, width, 0.072),
+                      showEmailInput(myEmail_Controller),
+                      showPaddingByDIR("bottom", width, 0.048),
+                      showPwdInput(myPassword_Controller),
+                      showPaddingByDIR("bottom", width, 0.120),
+                      showSignInBtn(width, height),
+                      showPaddingByDIR("bottom", width, 0.078),
+                      showForgotPwdInkwell(),
+                      showPaddingByDIR("bottom", width, 0.180),
+                    ],
                   ),
-                  showSignUpRow(width, height, 1.0, 0.1145), // 0.1145 | 기기 시연 시 0.120
-                ],
-              ),
+                ),
+                showSignUpRow(width, height, 1.0, 0.11525), // 0.11525 | 기기 시연 시 0.120 
+              ],
             ),
           ),
         ),
@@ -80,21 +77,18 @@ class _LoginScreenState extends State<LoginScreen> {
   /// Card 위젯 반환
   Widget showIconCard(width, height){
     return Card(
+      elevation: 10,
       child: Image.asset(
-        'Images/bgImage.jpg',
+        'Images/Allmap_Icon.png',
         fit: BoxFit.cover,
-        width: width * 0.35556,
-        height: width * 0.35556,
+        width: width * 0.311,
+        height: width * 0.311,
       ),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(14),
-        side: BorderSide(
-          color: Color.fromRGBO(190, 202, 190, 1),
-          width: 1,
-        ),
+        borderRadius: BorderRadius.circular(24),
       ),
       margin: EdgeInsets.all(5),
-      color: Color.fromRGBO(190, 202, 190, 0.9),
+      color: Color.fromRGBO(190, 202, 190, 0.9), //190. 202. 190. 0.9
     );
   }
   /// showPaddingByDIR
@@ -137,9 +131,9 @@ class _LoginScreenState extends State<LoginScreen> {
     return TextField(
       controller: myEmail_Controller,
       decoration: InputDecoration(
-        isDense: true,
+        filled: true,
         prefixIcon: new Icon(Icons.text_fields),
-        border: OutlineInputBorder(),
+        border: InputBorder.none,
         hintText: '이메일',
         hintStyle: TextStyle(
           fontSize: 12,
@@ -158,14 +152,14 @@ class _LoginScreenState extends State<LoginScreen> {
       obscureText: true,
       controller: myPassword_Controller,
       decoration: InputDecoration(
-        isDense: true,
+        filled: true,
         prefixIcon: new Icon(Icons.text_fields),
-        border: OutlineInputBorder(),
+        border: InputBorder.none,
         hintText: '비밀번호',
         hintStyle: TextStyle(
           fontSize: 12,
         ),
-        fillColor: Color.fromRGBO(228, 255, 223, 1),
+        fillColor: Color.fromRGBO(251, 255, 228, 1),
       ),
     );
   }
