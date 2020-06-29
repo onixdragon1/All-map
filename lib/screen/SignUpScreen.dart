@@ -14,6 +14,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     double width = screenSize.width;
     double height = screenSize.height;
 
+    String id, pw;
+
     final myNickname_Controller = TextEditingController();
     final myEmail_Controller = TextEditingController();
     final myPassword_Controller = TextEditingController();
@@ -206,7 +208,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             context,
             MaterialPageRoute(
               builder: (context) => LoginScreen(
-                
+
               ),
             ),
           );

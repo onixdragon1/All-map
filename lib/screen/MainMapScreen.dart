@@ -1,5 +1,7 @@
+import 'package:all_map/screen/PicCheckScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:all_map/widget/DrawCircle.dart';
+
 
 class MainMapScreen extends StatefulWidget {
   @override
@@ -119,6 +121,14 @@ class _MainMapScreenState extends State<MainMapScreen> {
           InkWell(
             onTap: () {
               /* 길 찾기 메뉴 클릭 시 이동할 페이지로의 이동 코드 부분 */
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PicCheckScreen(
+                    
+                  ),
+                ),
+              );
             },
             child: Text(
               '길 찾기',

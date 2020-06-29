@@ -1,29 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:all_map/screen/MainMapScreen.dart';
 
-class SignUpScreen extends StatefulWidget {
+class PicCheckScreen extends StatefulWidget {
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _PicCheckScreenState createState() => _PicCheckScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _PicCheckScreenState extends State<PicCheckScreen> {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     double width = screenSize.width;
     double height = screenSize.height;
-
-    final myNickname_Controller = TextEditingController();
-    final myEmail_Controller = TextEditingController();
-    final myPassword_Controller = TextEditingController();
-
-    @override
-    void dispose() {
-      // Clean up the controller when the widget is disposed.
-      myEmail_Controller.dispose();
-      myPassword_Controller.dispose();
-      myNickname_Controller.dispose();
-      super.dispose();
-    }
 
     var circleOffsetX_green = (width * 0.4475) * -1;
     var circleOffsetX_yellow = width * 0.25;
@@ -40,13 +28,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
               children: <Widget>[
                 Container(
                   width: width * 0.8,
-                  height: height * 0.2,
+                  height: height * 0.15,
                   child: Column(
                     children: <Widget>[
+                      showPaddingByDIR("top", width, 0.024),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
                           ButtonTheme(
-                            minWidth: width * 1,
+                            minWidth: width * 0.2,
                             height: height * 0.09,
                             child: RaisedButton(
                               elevation: 5,
@@ -56,18 +46,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               child: Text(
                                 '다시 촬영',
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontSize: 12,
                                 ),
                               ),
-                              color: Color.fromRGBO(255, 245, 0, 1),
+                              color: Color.fromRGBO(89, 197, 71, 1),
                               onPressed: () {
                                 /*넘어갈 페이지 Nasvigator.push() 메서드로 제작*/ 
                               },
                             ),
                           ),
                           ButtonTheme(
-                            minWidth: width * 1,
+                            minWidth: width * 0.2,
                             height: height * 0.09,
                             child: RaisedButton(
                               elevation: 5,
@@ -77,11 +67,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               child: Text(
                                 '그대로 진행',
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontSize: 12,
                                 ),
                               ),
-                              color: Color.fromRGBO(255, 245, 0, 1),
+                              color: Color.fromRGBO(89, 197, 71, 1),
                               onPressed: () {
                                 /*넘어갈 페이지 Nasvigator.push() 메서드로 제작*/ 
                               },
@@ -96,7 +86,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: <Widget>[
                     Container(
                       child: Image.asset(
-                        '',
+                        'Images/bgImage.jpg',
                         fit: BoxFit.contain,
                         width: width * 0.9,
                         height: width * 0.9,
@@ -117,6 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ],
                 ),
+                showBottomNavbar(width, height),
               ],
             ),
           ),
@@ -236,6 +227,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         ],
       );
     }
+
     else return Text("존재하지 않은 컴포넌트입니다!");
   }
 
@@ -245,8 +237,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget showBottomNavbar(width, height){
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.only(top: width * 1.435575),  // 1.4125 | 1.435575 수치값 개발시 알아서 조정
-      height: height * 0.1,
+      // margin: EdgeInsets.only(top: width * 1.435575),  // 1.4125 | 1.435575 수치값 개발시 알아서 조정
+      height: height * 0.1975,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.only(
@@ -262,13 +254,54 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         ],
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          makeBottomNavbarComponent("가게 종류", width),
-          makeBottomNavbarComponent("모자이크", width),
-          makeBottomNavbarComponent("가게이름", width),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              makeBottomNavbarComponent("가게 종류", width),
+              makeBottomNavbarComponent("모자이크", width),
+              makeBottomNavbarComponent("가게이름", width),
+            ],
+          ),
+          showPaddingByDIR("bottom", width, 0.048),
+          showImgEnrollBtn(width, height),
         ],
+      ),
+    );
+  }
+
+  /// showImgEnrollBtn
+  /// "등록하기"라는 텍스트가 적힌 Button Widget 반환
+  Widget showImgEnrollBtn(width, height){
+    return ButtonTheme(
+      minWidth: width * 0.8,
+      height: height * 0.085,
+      child: RaisedButton(
+        elevation: 5,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(28),
+        ),
+        child: Text(
+          '등록하기',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 12,
+          ),
+        ),
+        color: Color.fromRGBO(255, 245, 0, 1),
+        onPressed: () {
+          /*넘어갈 페이지 Nasvigator.push() 메서드로 제작*/ 
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MainMapScreen(
+                
+              ),
+            ),
+          );
+        },
       ),
     );
   }
