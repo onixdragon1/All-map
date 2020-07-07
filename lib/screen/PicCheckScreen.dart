@@ -100,13 +100,14 @@ class _PicCheckScreenState extends State<PicCheckScreen> {
                     Text(
                       '이미지는 최대 370*370 픽셀까지 가능합니다.',
                       style: TextStyle(
-                        fontSize: width * 0.015,
+                        fontSize: width * 0.025,
                         decoration: TextDecoration.underline,
                         color: Colors.grey,
                       ),
                     ),
                   ],
                 ),
+                showPaddingByDIR('bottom', width, 0.068),
                 showBottomNavbar(width, height),
               ],
             ),
