@@ -1,5 +1,7 @@
 import 'package:all_map/screen/PicCheckScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'dart:async';
 import 'package:all_map/widget/DrawCircle.dart';
 
 
@@ -9,6 +11,16 @@ class MainMapScreen extends StatefulWidget {
 }
 
 class _MainMapScreenState extends State<MainMapScreen> {
+  Completer<GoogleMapController> _controller = Completer();
+
+  static final CameraPosition _gsmPosition = CameraPosition(
+    target: LatLng(35.143086, 126.800360),
+    zoom: 11.0,
+  );
+
+  void _onMapCreated(GoogleMapController controller){
+    _controller.complete(controller);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +41,8 @@ class _MainMapScreenState extends State<MainMapScreen> {
       child: Scaffold(
         body: Center(
           child: Container(
-            // width: width * 1,
-            // height: height * 1,
+            width: width * 1,
+            height: height * 1,
             child: Column(
               children: <Widget>[
                 Stack(
@@ -61,9 +73,12 @@ class _MainMapScreenState extends State<MainMapScreen> {
   /// 제일 뒤인 배경에 GoogleMap을 올릴 예정(현재는 색만 배치)
   Widget showGoogleMap(width, height){
     return Container(
-      width: width * 1,
-      height: height * 0.9645, //0.9645
-      decoration: BoxDecoration(color: Colors.lightBlueAccent),
+      width : width * 1,
+      height : height * 0.9645,
+      child: GoogleMap(
+        initialCameraPosition: _gsmPosition,
+        onMapCreated: _onMapCreated,
+      ),
     );
   }
 

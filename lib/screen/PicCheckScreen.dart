@@ -36,7 +36,7 @@ class _PicCheckScreenState extends State<PicCheckScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: <Widget>[
                           ButtonTheme(
-                            minWidth: width * 0.2,
+                            minWidth: width * 0.8,
                             height: height * 0.09,
                             child: RaisedButton(
                               elevation: 5,
@@ -45,27 +45,6 @@ class _PicCheckScreenState extends State<PicCheckScreen> {
                               ),
                               child: Text(
                                 '다시 촬영',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                ),
-                              ),
-                              color: Color.fromRGBO(89, 197, 71, 1),
-                              onPressed: () {
-                                /*넘어갈 페이지 Nasvigator.push() 메서드로 제작*/ 
-                              },
-                            ),
-                          ),
-                          ButtonTheme(
-                            minWidth: width * 0.2,
-                            height: height * 0.09,
-                            child: RaisedButton(
-                              elevation: 5,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(28),
-                              ),
-                              child: Text(
-                                '그대로 진행',
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 12,
