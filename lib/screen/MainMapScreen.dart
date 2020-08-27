@@ -1,8 +1,8 @@
 import 'package:all_map/screen/PicCheckScreen.dart';
+import 'package:all_map/screen/SettingScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
-import 'package:all_map/widget/DrawCircle.dart';
 
 
 class MainMapScreen extends StatefulWidget {
@@ -13,14 +13,23 @@ class MainMapScreen extends StatefulWidget {
 class _MainMapScreenState extends State<MainMapScreen> {
   Completer<GoogleMapController> _controller = Completer();
 
+  static const LatLng _tPosition = const LatLng(35.143086, 126.800360);
+
+  LatLng _targetPosition = _tPosition;
+
   static final CameraPosition _gsmPosition = CameraPosition(
-    target: LatLng(35.143086, 126.800360),
-    zoom: 11.0,
+    target: _tPosition,
+    zoom: 14.0,
   );
+
+  final Set<Marker> _markers = {};
 
   void _onMapCreated(GoogleMapController controller){
     _controller.complete(controller);
   }
+
+  /* 마커 클릭 시 크게 보기 | 등록하기 버튼 메뉴를 보여줄 위젯을 구성 */
+  /* 이후 세부 위젯에서 이벤트 추가 생성 */
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +87,7 @@ class _MainMapScreenState extends State<MainMapScreen> {
       child: GoogleMap(
         initialCameraPosition: _gsmPosition,
         onMapCreated: _onMapCreated,
+        markers: _markers,
       ),
     );
   }
@@ -97,7 +107,7 @@ class _MainMapScreenState extends State<MainMapScreen> {
           Container(
             width: width * 0.8,
             child:TextField(
-              obscureText: true,
+              obscureText: false,
               controller: mySearch_Controller,
               decoration: InputDecoration(
                 filled: true,
@@ -122,7 +132,6 @@ class _MainMapScreenState extends State<MainMapScreen> {
   /// "길 찾기", "주변 상점", "포인트 교환", "설정"
   /// 을 구성하는 위젯을 반환 (각 Component 별로 분리)
   Widget makeBottomNavbarComponent(name, width){
-    
     if(name == "길 찾기"){
       return Stack(
         alignment: Alignment.center,
@@ -170,6 +179,7 @@ class _MainMapScreenState extends State<MainMapScreen> {
           InkWell(
             onTap: () {
               /* 주변 상점 메뉴 클릭 시 이동할 페이지로의 이동 코드 부분 */
+
             },
             child: Text(
               '주변 상점',
@@ -194,8 +204,9 @@ class _MainMapScreenState extends State<MainMapScreen> {
             height: width * 0.09,
           ),
           InkWell(
-            onTap: () {
+            onTap:() {
               /* 포인트 교환 메뉴 클릭 시 이동할 페이지로의 이동 코드 부분 */
+              showAlertDialog(context, width);
             },
             child: Text(
               '포인트 교환',
@@ -222,6 +233,14 @@ class _MainMapScreenState extends State<MainMapScreen> {
           InkWell(
             onTap: () {
               /* 설정 메뉴 클릭 시 이동할 페이지로의 이동 코드 부분 */
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SettingScreen(
+                    
+                  ),
+                ),
+              );
             },
             child: Text(
               '설정',
@@ -269,6 +288,35 @@ class _MainMapScreenState extends State<MainMapScreen> {
           makeBottomNavbarComponent("설정", width),
         ],
       ),
+    );
+  }
+
+  void showAlertDialog(context, width){
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: new Container(
+            width: width * 0.5,
+            height: width * 0.8,
+            child: Column(
+              children: [
+                Image.asset(
+                  'Images/sad.png',
+                  width: width * 0.4,
+                  height: width * 0.65,
+                ),
+                Text(
+                  '준비 중인 기능입니다!',
+                  style: TextStyle(
+                    fontSize: width * 0.05,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
