@@ -2,8 +2,32 @@ import 'package:all_map/screen/PicCheckScreen.dart';
 import 'package:all_map/screen/SettingScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'dart:async';
+import 'dart:async'; // async / await 지원
+import 'dart:convert'; // JSON 데이터 처리 지원
+import 'package:flutter/foundation.dart'; // compute 함수를 제공
+import 'package:http/http.dart' as http; // HTTP 프로토콜 지원
 
+// 사진의 정보를 저장하는 클래스
+class Photo {
+  final int albumId;
+  final int id;
+  final String title;
+  final String url;
+  final String thumbnailUrl;
+
+  Photo({this.albumId, this.id, this.title, this.url, this.thumbnailUrl});
+
+  // 사진의 정보를 포함하는 인스턴스를 생성하여 반환하는 factory 생성자
+  factory Photo.fromJson(Map<String, dynamic> json) {
+    return Photo(
+      albumId: json['albumId'] as int,
+      id: json['id'] as int,
+      title: json['title'] as String,
+      url: json['url'] as String,
+      thumbnailUrl: json['thumbnailUrl'] as String,
+    );
+  }
+}
 
 class MainMapScreen extends StatefulWidget {
   @override
@@ -23,6 +47,8 @@ class _MainMapScreenState extends State<MainMapScreen> {
   );
 
   final Set<Marker> _markers = {};
+  final List<Photo> photos;
+  Key key;
 
   void _onMapCreated(GoogleMapController controller){
     _controller.complete(controller);
@@ -30,6 +56,7 @@ class _MainMapScreenState extends State<MainMapScreen> {
 
   /* 마커 클릭 시 크게 보기 | 등록하기 버튼 메뉴를 보여줄 위젯을 구성 */
   /* 이후 세부 위젯에서 이벤트 추가 생성 */
+  _MainMapScreenState({Key key, this.photos});
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +72,7 @@ class _MainMapScreenState extends State<MainMapScreen> {
       mySearch_Controller.dispose();
       super.dispose();
     }
+    print(photos);
 
     return SafeArea(
       child: Scaffold(
@@ -68,6 +96,7 @@ class _MainMapScreenState extends State<MainMapScreen> {
                     /* 하단 NAVIGATION BAR 설정 시작*/
                     showBottomNavbar(width, height),
                     /* 하단 NAVIGATION BAR 설정 끝 */
+                    
                   ],
                 ),
               ],
@@ -179,7 +208,20 @@ class _MainMapScreenState extends State<MainMapScreen> {
           InkWell(
             onTap: () {
               /* 주변 상점 메뉴 클릭 시 이동할 페이지로의 이동 코드 부분 */
-
+              FutureBuilder<List<Photo>>(
+                // future 항목에 fetchPhotos 함수 설정. fetchPhotos는 Future 객체를 결과값으로 반환
+                future: fetchPhotos(http.Client()),
+                // Future 객체를 처리할 빌더
+                builder: (context, snapshot) {
+                  // 에러가 발생하면 에러 출력
+                  if (snapshot.hasError) print(snapshot.error);
+                  // 정상적으로 데이터가 수신된 경우
+                  return snapshot.hasData
+                      ? _MainMapScreenState(photos: snapshot.data) // PhotosList를 출력
+                      : Center(
+                          child: CircularProgressIndicator()); // 데이터 수신 전이면 인디케이터 출력
+                },
+              );
             },
             child: Text(
               '주변 상점',
@@ -319,4 +361,25 @@ class _MainMapScreenState extends State<MainMapScreen> {
       },
     );
   }
+
+
+  // 서버로부터 데이터를 수신하여 그 결과를 List<Photo> 형태의 Future 객체로 반환하는 async 함수
+  Future<List<Photo>> fetchPhotos(http.Client client) async {
+    // 해당 URL로 데이터를 요청하고 수신함
+    final response =
+        await client.get('https://drf-mapapi.herokuapp.com/store/all/');
+
+    // parsePhotos 함수를 백그라운도 격리 처리
+    return compute(parsePhotos, response.body);
+  }
+
+  // 수신한 데이터를 파싱하여 List<Photo> 형태로 반환
+  List<Photo> parsePhotos(String responseBody) {
+    // 수신 데이터를 JSON 포맷(JSON Array)으로 디코딩
+    final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+
+    // JSON Array를 List<Photo>로 변환하여 반환
+    return parsed.map<Photo>((json) => Photo.fromJson(json)).toList();
+  }
+  
 }

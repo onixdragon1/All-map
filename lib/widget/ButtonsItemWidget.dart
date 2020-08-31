@@ -10,8 +10,8 @@ class ButtonsItemWidget extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 156,
-            height: 157,
+            width: 100,
+            height: 100,
             margin: EdgeInsets.only(left: 24),
             decoration: BoxDecoration(
               color: AppColors.primaryBackground,
@@ -33,7 +33,7 @@ class ButtonsItemWidget extends StatelessWidget {
                       color: AppColors.primaryText,
                       fontFamily: "Apple SD Gothic Neo",
                       fontWeight: FontWeight.w700,
-                      fontSize: 30,
+                      fontSize: 20,
                     ),
                   ),
                 ),
@@ -42,8 +42,8 @@ class ButtonsItemWidget extends StatelessWidget {
           ),
           Spacer(),
           Container(
-            width: 157,
-            height: 157,
+            width: 100,
+            height: 100,
             margin: EdgeInsets.only(right: 23),
             decoration: BoxDecoration(
               color: AppColors.primaryBackground,
@@ -64,7 +64,7 @@ class ButtonsItemWidget extends StatelessWidget {
                       color: AppColors.primaryText,
                       fontFamily: "Apple SD Gothic Neo",
                       fontWeight: FontWeight.w700,
-                      fontSize: 30,
+                      fontSize: 18,
                     ),
                   ),
                 ),
