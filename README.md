@@ -24,7 +24,8 @@ Mean : our map made by user / real time update map
 - 👱 ges020 (https://github.com/ges020) : Design
 
 ## 🤔 Result / 결과물
-- 이미지 업로드 예정
+- 프로젝트 실패로 인해 구체적인 결과물이 별로 없습니다.
+<img width="200" alt="스크린샷 2020-09-07 오후 5 20 57" src="https://user-images.githubusercontent.com/51693390/92367171-0bb00d00-f131-11ea-949b-fd697afc581b.jpg">
 
 
 ## Getting Started
