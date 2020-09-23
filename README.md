@@ -19,9 +19,9 @@ Mean : our map made by user / real time update map
 
 ## 👏 GroupMember / 조원
 ### Project Group
-- 🧑 iov somnimum (https://github.com/iovsomnium) : Front-end, Back-end, Design
-- 👱 onixdragon1 (https://github.com/onixdragon1) : Front-end, Back-end
-- 👱 ges020 (https://github.com/ges020) : Design
+- 🧑 `iov somnimum` (https://github.com/iovsomnium) : Front-end, Back-end, Design
+- 👱 `onixdragon1` (https://github.com/onixdragon1) : Front-end, Back-end
+- 👱 `ges020` (https://github.com/ges020) : Design
 
 ## 🤔 Result / 결과물
 - 프로젝트 실패로 인해 구체적인 결과물이 별로 없습니다.
