@@ -32,7 +32,7 @@
 ## 😏 프로젝트 시작법 / how to start project
 ``` python manage.py runserver ```
 
-### FrontEnd / 프론트 결과물
-- https://github.com/onixdragon1/All-map
+### BackEnd / 백 결과물
+- https://github.com/iovsomnium/All-mapBack
 
 
